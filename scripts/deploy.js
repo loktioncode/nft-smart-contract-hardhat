@@ -9,20 +9,20 @@ async function main() {
   const metadataURL = METADATA_URL;
   /*
   A ContractFactory in ethers.js is an abstraction used to deploy new smart contracts,
-  so cryptoDevsContract here is a factory for instances of our CryptoDevs contract.
+  so cryptoBrozContract here is a factory for instances of our CryptoBroz contract.
   */
-  const cryptoDevsContract = await ethers.getContractFactory("CryptoDevs");
+  const cryptoBrozContract = await ethers.getContractFactory("CryptoBroz");
 
   // deploy the contract
-  const deployedCryptoDevsContract = await cryptoDevsContract.deploy(
+  const deployedCryptoBrozContract = await cryptoBrozContract.deploy(
     metadataURL,
     whitelistContract
   );
 
   // print the address of the deployed contract
   console.log(
-    "Crypto Devs Contract Address:",
-    deployedCryptoDevsContract.address
+    "Crypto Bros Contract Address:",
+    deployedCryptoBrozContract.address
   );
 }
 
