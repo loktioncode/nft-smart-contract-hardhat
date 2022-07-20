@@ -6,6 +6,7 @@ typechain
 typechain-types
 
 ./contract/node_modules
+./contracts/.env
 ./ui/node_modules
 
 
