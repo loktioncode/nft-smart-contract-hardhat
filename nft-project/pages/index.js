@@ -1,9 +1,11 @@
 import { Contract, providers, utils } from "ethers";
 import Head from "next/head";
+import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import Web3Modal from "web3modal";
 import { abi, NFT_CONTRACT_ADDRESS } from "../constants";
 import styles from "../styles/Home.module.css";
+import logo from "../cryptodevs/0.svg"
 
 export default function Home() {
   // walletConnected keep track of whether the user's wallet is connected or not
@@ -30,11 +32,7 @@ export default function Home() {
       const signer = await getProviderOrSigner(true);
       // Create a new instance of the Contract with a Signer, which allows
       // update methods
-      const whitelistContract = new Contract(
-        NFT_CONTRACT_ADDRESS,
-        abi,
-        signer
-      );
+      const whitelistContract = new Contract(NFT_CONTRACT_ADDRESS, abi, signer);
       // call the presaleMint from the contract, only whitelisted addresses would be able to mint
       const tx = await whitelistContract.presaleMint({
         // value signifies the cost of one crypto dev which is "0.01" eth.
@@ -60,11 +58,7 @@ export default function Home() {
       const signer = await getProviderOrSigner(true);
       // Create a new instance of the Contract with a Signer, which allows
       // update methods
-      const whitelistContract = new Contract(
-        NFT_CONTRACT_ADDRESS,
-        abi,
-        signer
-      );
+      const whitelistContract = new Contract(NFT_CONTRACT_ADDRESS, abi, signer);
       // call the mint from the contract to mint the Crypto Dev
       const tx = await whitelistContract.mint({
         // value signifies the cost of one crypto dev which is "0.01" eth.
@@ -104,11 +98,7 @@ export default function Home() {
       const signer = await getProviderOrSigner(true);
       // Create a new instance of the Contract with a Signer, which allows
       // update methods
-      const whitelistContract = new Contract(
-        NFT_CONTRACT_ADDRESS,
-        abi,
-        signer
-      );
+      const whitelistContract = new Contract(NFT_CONTRACT_ADDRESS, abi, signer);
       // call the startPresale from the contract
       const tx = await whitelistContract.startPresale();
       setLoading(true);
@@ -337,8 +327,8 @@ export default function Home() {
       return (
         <div>
           <div className={styles.description}>
-            Presale has started!!! If your address is whitelisted, Mint a
-            Crypto Dev 🥳
+            Presale has started!!! If your address is whitelisted, Mint a Crypto
+            Dev 🥳
           </div>
           <button className={styles.button} onClick={presaleMint}>
             Presale Mint 🚀
@@ -350,7 +340,7 @@ export default function Home() {
     // If presale started and has ended, its time for public minting
     if (presaleStarted && presaleEnded) {
       return (
-        <button className={styles.button} onClick={publicMint}>
+        <button className={styles.button} role="button" onClick={publicMint}>
           Public Mint 🚀
         </button>
       );
@@ -366,17 +356,22 @@ export default function Home() {
       </Head>
       <div className={styles.main}>
         <div>
-          <h1 className={styles.title}>Welcome to Crypto Devs!</h1>
+          <div>
+            <Image
+              alt="logo"
+              src={logo}
+              width={700}
+              height={235}
+            />
+          </div>
+          <h1 className={styles.title}>Welcome to Crypto Bros!</h1>
           <div className={styles.description}>
             Its an NFT collection for developers in Crypto.
           </div>
           <div className={styles.description}>
             {tokenIdsMinted}/20 have been minted
           </div>
-          {renderButton()}
-        </div>
-        <div>
-          <img className={styles.image} src="./cryptodevs/0.svg" />
+          <div className={styles.description}>{renderButton()}</div>
         </div>
       </div>
 
