@@ -582,5 +582,5 @@ export const abi = [
   }
 ];
 
-  // Crypto Bros Contract Address: Crypto Bros Contract Address: 0x76EF82Ff069cEb92F207953846A549267FA7c321
-export const NFT_CONTRACT_ADDRESS = "0x76EF82Ff069cEb92F207953846A549267FA7c321";
+  // OLD Crypto Bros Contract Address: 0x76EF82Ff069cEb92F207953846A549267FA7c321
+export const NFT_CONTRACT_ADDRESS = "0xa4E2B6F24807d434378e253bBBa0f57B9662A64C";
